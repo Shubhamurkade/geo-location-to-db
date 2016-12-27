@@ -1,31 +1,4 @@
-<?php
-//start session to know the current user
-require('login-info.php');
-session_start();
-if(isset($_SESSION['mail']) && isset($_SESSION['password']))
-{
-	$mail = $_SESSION['mail'];
-	$pass = $_SESSION['password'];
-	$con = mysqli_connect($host, $username, $password);
-	mysqli_select_db($con, $database);
-	$sql = "select * from admin";
-	$result = mysqli_query($con, $sql) or die(mysqli_error($con));
-	$flag = 0;
-	while($row = mysqli_fetch_array($result))
-	{
-		if($row['email']==$mail && $row['password'] == $pass){
-			$flag =1;
-			break;
-		}
-	}
-	mysqli_close($con);
-}
-if(!isset($_SESSION['mail']) || !isset($_SESSION['password']) || $flag=0)
-{
-	header('Location: /home.php?check=na');
-	exit;
-}
-?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -55,10 +28,6 @@ if(!isset($_SESSION['mail']) || !isset($_SESSION['password']) || $flag=0)
 		</style>	
 	</head>
 	<body>
-		<?php
-			require("header.php");
-			
-		?>
 
 		<main>
 			<div class="container">	
