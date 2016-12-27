@@ -28,7 +28,10 @@
 		</style>	
 	</head>
 	<body>
-
+		<?php
+			require("header.php");
+			
+		?>
 		<main>
 			<div class="container">	
 				<div class="col-sm-12">
